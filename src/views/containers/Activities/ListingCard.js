@@ -29,7 +29,7 @@ const styles = {
   },
 }
 
-function ListingCard(props) {
+function ListingCard (props) {
   const {
     one,
     classes,
@@ -48,7 +48,9 @@ function ListingCard(props) {
     <div>
       <Card className={classes.card}>
         <Img
-          src={tokenData && tokenData.get('imgSrc') ? tokenData.get('imgSrc') : imgSrc}
+          src={tokenData && tokenData.get('imgSrc')
+            ? tokenData.get('imgSrc')
+            : imgSrc}
           alt=""
         />
 
@@ -77,10 +79,11 @@ function ListingCard(props) {
             <div>
               {!revealTrigger && !updateTrigger ? (
                 <div>
-                  <Button onClick={e => openSidePanel(one, 'commitVote')} color="primary">
+                  <Button onClick={e => openSidePanel(one, 'commitVote')}
+                          color="primary">
                     {'Commit Vote'}
                   </Button>
-                  <Countdown end={one.getIn(['commitExpiry', 'date'])} />
+                  <Countdown end={one.getIn(['commitExpiry', 'date'])}/>
                 </div>
               ) : (
                 revealTrigger &&
@@ -92,17 +95,18 @@ function ListingCard(props) {
                     >
                       {'Reveal Vote'}
                     </Button>
-                    <Countdown end={one.getIn(['revealExpiry', 'date'])} />
+                    <Countdown end={one.getIn(['revealExpiry', 'date'])}/>
                   </div>
                 )
               )}
             </div>
           ) : listingType !== 'expired' ? (
             <div>
-              <Button onClick={e => openSidePanel(one, 'challenge')} color="secondary">
+              <Button onClick={e => openSidePanel(one, 'challenge')}
+                      color="secondary">
                 {'Challenge'}
               </Button>
-              <Countdown end={one.getIn(['appExpiry', 'date'])} />
+              <Countdown end={one.getIn(['appExpiry', 'date'])}/>
             </div>
           ) : (
             <div>
@@ -115,13 +119,14 @@ function ListingCard(props) {
             </div>
           )}
           {registry &&
-          registry.address === '0x9fc1917a8ba87db75e308c9de45d99813f63e64a' ? (
+          registry.address === '0x225f49b7bfc88703c9c5f2f6c13c5a341461dd5f' ? (
             <Button onClick={e => chooseTCR(one.get('listingID'))} wide>
               {'Select TCR'}
             </Button>
           ) : (
             updateTrigger && (
-              <Button onClick={e => handleUpdateStatus(listingHash)} color="primary">
+              <Button onClick={e => handleUpdateStatus(listingHash)}
+                      color="primary">
                 {'Update Status'}
               </Button>
             )

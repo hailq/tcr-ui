@@ -44,6 +44,7 @@ function homeReducer(state = initialState, action) {
         .set('network', fromJS(action.payload.network))
         .set('error', fromJS(false))
     case epTypes.SET_ABIS:
+      console.log(action)
       return state.set('abis', action.abis) // mutable
     case epTypes.SET_REGISTRY_CONTRACT:
       return state.setIn(['contracts', 'registry'], fromJS(action.payload))

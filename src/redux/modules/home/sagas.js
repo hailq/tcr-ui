@@ -40,6 +40,7 @@ export function* genesis() {
       throw new Error('Account undefined')
     } else {
       // dispatch account/network
+      console.log(network)
       yield put(actions.setupEthereumSucceeded({ account, network }))
     }
   } catch (error) {

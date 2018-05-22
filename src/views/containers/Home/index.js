@@ -21,6 +21,7 @@ import Header from 'views/components/Header'
 import Stats from 'views/components/Stats'
 import Listings from '../Listings/Loadable'
 import Activities from '../Activities/Loadable'
+import Registries from '../Registries/Loadable'
 
 const notificationStyles = {
   NotificationItem: {
@@ -67,6 +68,7 @@ class Home extends Component {
         <Switch>
           <Route exact path="/" component={Listings} />
           <Route exact path="/activities" component={Activities} />
+          <Route exact path="/registries" component={Registries} />
         </Switch>
 
         <Notifications style={notificationStyles} notifications={notifications} />

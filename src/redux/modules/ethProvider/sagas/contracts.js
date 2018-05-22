@@ -45,16 +45,26 @@ function* abisSaga() {
 }
 
 export function* registrySaga(action) {
+
   try {
+
     const abis = yield select(selectABIs)
     const account = yield select(selectAccount)
 
     const ethjs = yield call(getEthjs)
     const networkID = yield call(ethjs.net_version)
 
+    console.log(`Network: ${networkID}`)
+    console.log(action)
+    console.log(abis)
+
+
     // if action.payload.address, use that address (CHOOSE_TCR)
     // otherwise, use the default address (factory tcr)
-    let { address } = action.payload || abis.registry.networks[networkID]
+    // let { address } = action.payload || abis.registry.networks[networkID]
+    let address = (action.payload && action.payload.address) || '0x713e395d67abb516f5c075bba93df393f672d8ff'
+    // console.log(action.payload.address)
+    console.log(`Reg address: ${address}`)
 
     const registry = yield call(
       setupRegistry,

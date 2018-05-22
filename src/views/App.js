@@ -31,7 +31,7 @@ const muiTheme = createMuiTheme({
       root: {
         background: `linear-gradient(to right, ${theme.gradientLeft} 0%, ${
           theme.gradientRight
-        } 100%)`,
+          } 100%)`,
         border: 0,
         height: 3,
         width: '100%',
@@ -71,11 +71,12 @@ const App = () => (
     <Provider store={store}>
       <MuiThemeProvider theme={muiTheme}>
         <Router>
-          <Home />
+          <Home/>
         </Router>
       </MuiThemeProvider>
     </Provider>
   </AppWrapper>
 )
 
-export default App
+export { App, store }
+
