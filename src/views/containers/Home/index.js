@@ -66,9 +66,9 @@ class Home extends Component {
         />
 
         <Switch>
-          <Route exact path="/" component={Listings} />
+          <Route exact path="/home" component={Listings} />
           <Route exact path="/activities" component={Activities} />
-          <Route exact path="/registries" component={Registries} />
+          <Route exact path="/" component={Registries} />
         </Switch>
 
         <Notifications style={notificationStyles} notifications={notifications} />
