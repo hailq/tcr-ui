@@ -99,7 +99,7 @@ class Transactions extends Component {
 
         <Apply
           opened={sidePanelMethod === 'apply'}
-          needToApprove={needToApproveRegistry}
+          needToApprove={false}
           depositMore={this.state.depositMore}
           visibleApprove={this.state.visibleApprove}
           closeSidePanel={this.closeSidePanel}
@@ -115,7 +115,7 @@ class Transactions extends Component {
           tcr={tcr}
           parameters={parameters}
           selectedOne={sidePanelListing}
-          needToApprove={needToApproveRegistry}
+          needToApprove={false}
           handleInputChange={this.handleInputChange}
           handleApprove={this.handleApprove}
           handleChallenge={this.handleChallenge}
