@@ -47,12 +47,10 @@ function getStepContent(step) {
     case 0:
       return ''
     case 1:
-      return 'Approve the transaction to allow the voting smart contract to transfer tokens from your account'
-    case 2:
       return 'Please enter the amount of tokens you wish to commit to your vote'
-    case 3:
+    case 2:
       return 'Hold onto this file. You will need it to reveal your secret vote'
-    case 4:
+    case 3:
       return 'Please remember to reveal your vote'
     default:
       return 'Unknown step'
@@ -97,7 +95,6 @@ class CommitVote extends Component {
   getSteps = () => {
     return [
       'Choose your side',
-      'Approve Voting contract / Request voting rights',
       'Commit tokens',
       'Download secret vote file',
       'Send transaction',
@@ -142,7 +139,7 @@ class CommitVote extends Component {
         ? '- Oppose'
         : event.target.value === '1' ? '- Support' : ''
     this.setState({ selectedValue: event.target.value, choice })
-    this.handleNext(2)
+    this.handleNext(1)
   }
   handleChangeSalt = event => {
     this.setState({
@@ -218,36 +215,6 @@ class CommitVote extends Component {
           />
           <Text size="large">{'Oppose'}</Text>
         </div>
-      </div>,
-      <div className={classes.actionsContainer}>
-        <div>{`Voting allowance: ${this.props.balances.get('votingAllowance')}`}</div>
-        <div>{`Voting rights: ${this.props.balances.get('votingRights')}`}</div>
-        <SideTextInput
-          title="token amount"
-          type="number"
-          handleInputChange={e => handleInputChange(e, 'numTokens')}
-        />
-        {needToApprove ? (
-          <div>
-            <Button
-              methodName="approve"
-              onClick={e => handleApprove('voting')}
-              mode="strong"
-              wide
-            >
-              {'Approve Voting contract'}
-            </Button>
-          </div>
-        ) : (
-          <Button
-            methodName="requestVotingRights"
-            onClick={handleRequestVotingRights}
-            mode="strong"
-            wide
-          >
-            {'Request Voting Rights'}
-          </Button>
-        )}
       </div>,
       <div className={classes.actionsContainer}>
         <SideTextInput
@@ -341,8 +308,8 @@ class CommitVote extends Component {
                         </Button>
                       )}
                       {activeStep !== 0 &&
-                        activeStep !== 3 &&
-                        activeStep !== 4 && (
+                        activeStep !== 2 &&
+                        activeStep !== 3 && (
                           <Button
                             variant="raised"
                             color="primary"
